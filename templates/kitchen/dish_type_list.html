@@ -11,7 +11,6 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Update</th>
           <th>Delete</th>
         </tr>
 
@@ -22,9 +21,6 @@
               </td>
               <td>
                   {{ dishtype.name }}
-              </td>
-              <td>
-                <a href="{% url 'kitchen:dish_type-update' pk=dishtype.id%}">Update</a>
               </td>
               <td>
                 <a href="{% url 'kitchen:dish_type-delete' pk=dishtype.id%}">Delete</a>

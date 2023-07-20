@@ -8,7 +8,7 @@
     </a>
 
     <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">
-      Update years_of_experience
+      Update Information
     </a>
   </h1>
 
@@ -18,7 +18,7 @@
   <p><strong>Is staff:</strong> {{ cook.is_staff }}</p>
 
   <div class="ml-3">
-    <h4>Cars</h4>
+    <h4>Dishes</h4>
 
     {% for dish in driver.dishes.all %}
         <hr>
