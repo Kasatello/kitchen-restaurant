@@ -21,6 +21,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "django_bootstrap5",
+    "crispy_forms",
+    "crispy_bootstrap5",
+
     "kitchen"
 ]
 
@@ -52,6 +56,9 @@ TEMPLATES = [
     },
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 WSGI_APPLICATION = "restaurant.wsgi.application"
 
 DATABASES = {
@@ -79,6 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "kitchen.Cook"
 
+LOGIN_REDIRECT_URL = "/"
 
 LANGUAGE_CODE = "en-us"
 
@@ -90,6 +98,10 @@ USE_TZ = True
 
 
 STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
