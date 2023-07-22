@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.core.exceptions import ValidationError
 
-from kitchen.models import Cook, Dish
+from kitchen.models import Cook, Dish, DishType
 
 
 class DishForm(forms.ModelForm):
@@ -34,15 +34,61 @@ class CookUpdateForm(forms.ModelForm):
         fields = ["first_name", "last_name", "years_of_experience"]
 
     def clean_years_of_experience(self):
-        return validate_years_of_experience(self.cleaned_data["years_of_experience"])
+        return validate_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 def validate_years_of_experience(
     years_of_experience,
 ):
-    if years_of_experience > 50:
+    if not isinstance(years_of_experience, int) or years_of_experience < 0:
         raise ValidationError(
-            "You are too old"
+            "Years of experience must be a positive integer."
+        )
+
+    if not 0 <= years_of_experience <= 40:
+        raise ValidationError(
+            "Years of experience must be between 0 and 40."
         )
 
     return years_of_experience
+
+
+class CookSearchForm(forms.ModelForm):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by username..."})
+    )
+
+    class Meta:
+        model = Cook
+        fields = ["username"]
+
+
+class DishSearchForm(forms.ModelForm):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
+    )
+
+    class Meta:
+        model = Dish
+        fields = ["name"]
+
+
+class DishTypeSearchForm(forms.ModelForm):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
+    )
+
+    class Meta:
+        model = DishType
+        fields = ["name"]

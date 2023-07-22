@@ -20,6 +20,7 @@ class Cook(AbstractUser):
     class Meta:
         verbose_name = "cook"
         verbose_name_plural = "cooks"
+        ordering = ["id"]
 
     def __str__(self):
         return f"{self.username} ({self.first_name} {self.last_name})"
@@ -30,7 +31,7 @@ class Cook(AbstractUser):
 
 class Dish(models.Model):
     name = models.CharField(max_length=150)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     dish_type = models.ForeignKey(
         DishType,
