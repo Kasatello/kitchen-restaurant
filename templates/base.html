@@ -1,43 +1,79 @@
+{% load static %}
 {% load django_bootstrap5 %}
 {% bootstrap_css %}
-{% load static %}
+
 <!doctype html>
 <html lang="en">
+
 <head>
   {% block title %}
-    <title>Restaurant</title>
+  <title>Restaurant</title>
   {% endblock %}
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'fontawesome/all.min.css' %}"> <!-- Font Awesome CSS -->
+  <script src="{% static 'js/js_script.js' %}?v={{ STATIC_VERSION }}"></script>
+  <script src="{% static 'js/jquery-3.7.0.min.js' %}?v={{ STATIC_VERSION }}"></script>
 </head>
+
 <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand">Restaurant</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'kitchen:index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'kitchen:cook-list' %}">Cooks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'kitchen:dish-list' %}">Dishes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'kitchen:dish_type-list' %}">Dish Types</a>
+          </li>
+        </ul>
+          <button type="button" class="btn btn-link text-light d-lg-none">
+            <i class="fas fa-bars"></i> <!-- Font Awesome icon for mobile menu -->
+          </button>
+      </div>
+    </div>
+  </nav>
+
+<header class="header">
+  <div class="header_in">
+    <button type="button" class="toggle" id="sidebarToggle">
+      <i class="fas fa-bars"></i> <!-- Font Awesome icon for sidebar toggle -->
+    </button>
+  </div>
+</header>
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-2">
-
+    <div class="col-md-2 bg-light" id="sidebar" style="min-height: 100vh;">
       {% block sidebar %}
-        {% include "includes/sidebar.html" %}
+      {% include "includes/sidebar.html" %}
       {% endblock %}
-
     </div>
-    <div class="col-sm-10 ">
-
+    <div class="col-md-10 content-container" style="min-height: 100vh; background-color: #fff;">
       {% block content %}{% endblock %}
-
+    </div>
       {% block pagination %}
         {% include "includes/pagination.html" %}
       {% endblock %}
-
     </div>
   </div>
-</div>
-
-{% block permission_denied_content %}
-{% endblock %}
 
 </body>
+
 </html>

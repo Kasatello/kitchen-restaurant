@@ -1,21 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    {{ dish.name }}
-    <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
-
-    <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
-  </h1>
-  <p>Dish Type: {{ dish.dishtype.name }}</p>
-  <hr>
-  <ul>
-    {% for cook in dish.cooks.all %}
-      <li>{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</li>
-    {% endfor %}
-  </ul>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow">
+          <div class="card-body">
+            <h1 class="card-title text-center mb-4 display-4">
+              {{ dish.name }}
+            </h1>
+            <div class="text-center">
+              <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+                <i class="fas fa-trash-alt"></i> Delete
+              </a>
+              <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+                <i class="fas fa-edit"></i> Update
+              </a>
+            </div>
+            <hr>
+            <p><strong>Dish Type:</strong> {{ dish.dishtype.name }}</p>
+            <p><strong>Price:</strong> ${{ dish.price }}</p>
+            <p><strong>Description:</strong> {{ dish.description }}</p>
+            <hr>
+            <h4>Cooks:</h4>
+            <ul>
+              {% for cook in dish.cooks.all %}
+              <li>{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

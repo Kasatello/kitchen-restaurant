@@ -75,10 +75,6 @@ urlpatterns = [
         CookDetailView.as_view(),
         name="cook-detail"
     ),
-    path("cook/",
-         CookListView.as_view(),
-         name="cook-list"
-         ),
     path(
         "cook/create/",
         CookCreateView.as_view(),

@@ -1,35 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>
-      Dish Type List
-      <a style="float: right" href="{% url 'kitchen:dish_type-create'%}" class="btn btn-primary link-to-page">Create</a>
+  <div class="container mt-5">
+    <h1 class="mb-4">
+      <i class="fas fa-utensils"></i> Dish Type List
     </h1>
 
-    {% if dish_type_list %}
-      <table class="table">
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Delete</th>
-        </tr>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <form>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for dish types...">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search"></i>Search
+              </button>
+          </div>
+        </form>
+        </div>
+        <div class="col-md-6 text-end">
+          <a href="{% url 'kitchen:dish_type-create' %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Create New Dish Type
+          </a>
+        </div>
+      </div>
 
-        {% for dishtype in dish_type_list %}
+      {% if dish_type_list %}
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="table-dark">
             <tr>
-              <td>
-                  {{ dishtype.id }}
-              </td>
-              <td>
-                  {{ dishtype.name }}
-              </td>
-              <td>
-                <a href="{% url 'kitchen:dish_type-delete' pk=dishtype.id%}">Delete</a>
-              </td>
-          </tr>
-        {% endfor %}
-      </table>
-
-    {% else %}
-        <p>There are no any types of dish in restaurant.</p>
-    {% endif %}
+              <th scope="col">
+                <i class="fas fa-utensils"></i> Name
+              </th>
+              <th scope="col">
+                <i class="fas fa-trash-alt"></i> Delete
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for dishtype in dish_type_list %}
+                <tr>
+                  <td>{{ dishtype.name }}</td>
+                    <td>
+                      <a href="{% url 'kitchen:dish_type-delete' pk=dishtype.id %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash-alt"></i> Delete
+                      </a>
+                    </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="lead">There are no any types of dish in the restaurant.</p>
+      {% endif %}
+    </div>
 {% endblock %}
