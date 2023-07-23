@@ -20,5 +20,6 @@
   <input type="submit" value="Login" class="btn btn-primary" />
   <input type="hidden" name="next" value="{{ next }}" />
 </form>
+<p>Don't have an account? <a href="{% url 'kitchen:cook-create' %}">Sign up</a></p>
 
 {% endblock %}

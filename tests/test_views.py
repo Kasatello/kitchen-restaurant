@@ -101,8 +101,12 @@ class PrivateDishTest(TestCase):
             {"name": searched_name}
         )
         self.assertEqual(response.status_code, 200)
-        dish_in_context = Dish.objects.filter(name__icontains=searched_name)
-        self.assertQuerysetEqual(response.context["dish_list"], dish_in_context)
+        dish_in_context = Dish.objects.filter(
+            name__icontains=searched_name
+        )
+        self.assertQuerysetEqual(
+            response.context["dish_list"], dish_in_context
+        )
 
 
 class PublicCookTests(TestCase):

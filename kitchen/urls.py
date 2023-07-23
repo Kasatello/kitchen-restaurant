@@ -14,7 +14,7 @@ from kitchen.views import (
     DishDeleteView,
     CookDetailView,
     CookDeleteView,
-    CookCreateView, CookUpdateView
+    CookCreateView, CookUpdateView, PermissionDeniedView
 )
 
 
@@ -77,15 +77,15 @@ urlpatterns = [
     ),
     path("cook/",
          CookListView.as_view(),
-         name="cook-list"),
-
+         name="cook-list"
+         ),
     path(
         "cook/create/",
         CookCreateView.as_view(),
         name="cook-create"
-         ),
+    ),
     path(
-        "cook/<int:pk>update",
+        "cook/<int:pk>/update",
         CookUpdateView.as_view(),
         name="cook-update"
     ),
@@ -94,6 +94,10 @@ urlpatterns = [
         CookDeleteView.as_view(),
         name="cook-delete",
     ),
+    path(
+        "permission-denied/",
+        PermissionDeniedView.as_view(),
+        name="permission-denied")
 ]
 
 app_name = "kitchen"

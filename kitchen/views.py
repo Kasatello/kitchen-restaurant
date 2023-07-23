@@ -1,10 +1,19 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import DishForm, CookCreationForm, CookUpdateForm, CookSearchForm, DishSearchForm, DishTypeSearchForm
+from kitchen.forms import (
+    DishForm,
+    CookCreationForm,
+    CookUpdateForm,
+    CookSearchForm,
+    DishSearchForm,
+    DishTypeSearchForm
+)
 from kitchen.models import Cook, DishType, Dish
 
 
@@ -132,18 +141,49 @@ class CookDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
 
 
-class CookCreateView(LoginRequiredMixin, generic.CreateView):
+class CookCreateView(generic.CreateView):
     model = Cook
     form_class = CookCreationForm
     success_url = reverse_lazy("kitchen:cook-list")
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        login(self.request, self.object)
+        return response
 
-class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
+
+class CookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, generic.UpdateView):
+    permission_required = "kitchen.change_cook"
     model = Cook
     form_class = CookUpdateForm
+    template_name = "kitchen/cook_form.html"
     success_url = reverse_lazy("kitchen:cook-list")
 
+    def test_func(self):
+        return self.request.user == self.get_object() or self.request.user.is_superuser
 
-class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
+    def handle_no_permission(self):
+        if self.request.user == self.get_object():
+            return super().post(self.request, *self.args, **self.kwargs)
+        else:
+            return render(self.request, "kitchen/permission_denied.html")
+
+
+class CookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
+    permission_required = "kitchen.delete_cook"
     model = Cook
-    success_url = reverse_lazy("")
+    template_name = "kitchen/cook_confirm_delete.html"
+    success_url = reverse_lazy("kitchen:cook-list")
+
+    def test_func(self):
+        return self.request.user == self.get_object() or self.request.user.is_superuser
+
+    def handle_no_permission(self):
+        if self.request.user == self.get_object():
+            return super().post(self.request, *self.args, **self.kwargs)
+        else:
+            return render(self.request, "kitchen/permission_denied.html")
+
+
+class PermissionDeniedView(generic.TemplateView):
+    template_name = "kitchen/permission_denied.html"
