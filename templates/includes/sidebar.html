@@ -3,7 +3,7 @@
     {% if user.is_authenticated %}
       <br>
       <li class="nav-item">
-        User: <a class="nav-link" href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
+        <a class="nav-link" href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
       </li>
       <hr>
      <li class="nav-item">
