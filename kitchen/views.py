@@ -1,6 +1,6 @@
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -70,7 +70,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DishListView(generic.ListView):
     model = Dish
     queryset = Dish.objects.all().select_related("dish_type")
-    paginate_by = 10
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(DishListView, self).get_context_data(**kwargs)
@@ -189,3 +189,16 @@ class CookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.Delete
 
 class PermissionDeniedView(generic.TemplateView):
     template_name = "kitchen/permission_denied.html"
+
+
+class DishListByTypeView(generic.ListView):
+    template_name = 'kitchen/dish-list-by-type.html'
+    context_object_name = 'dish_list'
+
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+        try:
+            dish_type = DishType.objects.get(pk=pk)
+            return Dish.objects.filter(dish_type=dish_type)
+        except DishType.DoesNotExist:
+            raise Http404("Dish Type does not exist.")

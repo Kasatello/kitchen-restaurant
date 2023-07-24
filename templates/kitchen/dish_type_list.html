@@ -1,52 +1,44 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <div class="container mt-5">
-    <h1 class="mb-4">Dish Type List
-    </h1>
-
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <form>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for dish types...">
-              <button type="submit" class="btn btn-primary">Search
-              </button>
-          </div>
-        </form>
-        </div>
-        <div class="col-md-6 text-end">
-          <a href="{% url 'kitchen:dish_type-create' %}" class="btn btn-primary">Create New Dish Type
-          </a>
-        </div>
-      </div>
-
-      {% if dish_type_list %}
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">Name
-              </th>
-              <th scope="col">Delete
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-              {% for dishtype in dish_type_list %}
-                <tr>
-                  <td>{{ dishtype.name }}</td>
-                    <td>
-                      <a href="{% url 'kitchen:dish_type-delete' pk=dishtype.id %}" class="btn btn-sm btn-danger">Delete
-                      </a>
-                    </td>
-                </tr>
-              {% endfor %}
-            </tbody>
-        </table>
-      </div>
-      {% else %}
-      <p class="lead">There are no any types of dish in the restaurant.</p>
-      {% endif %}
+<div class="container mt-5">
+  <form class="mb-3">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for dish types...">
+      <button type="submit" class="btn btn-primary">Search</button>
     </div>
+  </form>
+
+  <h1 class="display-4 mb-4">
+    Dish Types
+    <a href="{% url 'kitchen:dish_type-create' %}" class="btn btn-primary link-to-page">
+      <i class="fas fa-plus"></i> Create New Dish Type
+    </a>
+  </h1>
+
+  {% if dish_type_list %}
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for dishtype in dish_type_list %}
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ dishtype.name }}</h5>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group" role="group" aria-label="Dish Type Actions">
+              <a href="{% url 'kitchen:dish-list-by-type' pk=dishtype.id %}" class="btn btn-sm btn-outline-primary">View Dishes</a>
+            </div>
+            <a href="{% url 'kitchen:dish_type-delete' pk=dishtype.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="lead">There are no types of dishes in the restaurant.</p>
+  {% endif %}
+</div>
 {% endblock %}

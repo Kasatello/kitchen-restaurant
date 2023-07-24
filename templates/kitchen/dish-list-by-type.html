@@ -18,16 +18,20 @@
   </h1>
 
   {% if dish_list %}
-  <div class="table-card">
+  <div class="row">
     {% for dish in dish_list %}
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">{{ dish.name }}</h5>
-        <p class="card-text"><strong>Price:</strong> ${{ dish.price }}</p>
-        <div class="btn-group" role="group" aria-label="Dish Actions">
-          <a href="{% url 'kitchen:dish-detail' pk=dish.id %}" class="btn btn-primary me-3">Dish Details</a>
-          <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-sm btn-outline-primary me-3">Edit</a>
-          <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">{{ dish.name }}</h5>
+          <p class="card-text"><strong>Price:</strong> ${{ dish.price }}</p>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group" role="group" aria-label="Dish Actions">
+            <a href="{% url 'kitchen:dish-detail' pk=dish.id %}" class="btn btn-primary me-3">Dish Details</a>
+            <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-sm btn-outline-primary me-3">Edit</a>
+            <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+          </div>
         </div>
       </div>
     </div>
