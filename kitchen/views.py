@@ -1,5 +1,7 @@
 from django.contrib.auth import login
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    PermissionRequiredMixin)
 from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -151,7 +153,9 @@ class CookCreateView(generic.CreateView):
         return response
 
 
-class CookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, generic.UpdateView):
+class CookUpdateView(LoginRequiredMixin,
+                     PermissionRequiredMixin,
+                     generic.UpdateView):
     permission_required = "kitchen.change_cook"
     model = Cook
     form_class = CookUpdateForm
@@ -159,7 +163,8 @@ class CookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, generic.Update
     success_url = reverse_lazy("kitchen:cook-list")
 
     def test_func(self):
-        return self.request.user == self.get_object() or self.request.user.is_superuser
+        return (self.request.user == self.get_object()
+                or self.request.user.is_superuser)
 
     def handle_no_permission(self):
         context = {
@@ -168,17 +173,22 @@ class CookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, generic.Update
         if self.request.user == self.get_object():
             return super().handle_no_permission()
         else:
-            return render(self.request, "kitchen/permission_denied.html", context)
+            return render(
+                self.request, "kitchen/permission_denied.html", context
+            )
 
 
-class CookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
+class CookDeleteView(LoginRequiredMixin,
+                     PermissionRequiredMixin,
+                     generic.DeleteView):
     permission_required = "kitchen.delete_cook"
     model = Cook
     template_name = "kitchen/cook_confirm_delete.html"
     success_url = reverse_lazy("kitchen:cook-list")
 
     def test_func(self):
-        return self.request.user == self.get_object() or self.request.user.is_superuser
+        return (self.request.user == self.get_object()
+                or self.request.user.is_superuser)
 
     def handle_no_permission(self):
         context = {
