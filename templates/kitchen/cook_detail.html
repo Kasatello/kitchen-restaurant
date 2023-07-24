@@ -8,11 +8,9 @@
           <div class="card-body">
             <h1 class="card-title text-center mb-4 display-4">Cook Details - {{ cook.username }}</h1>
             <div class="text-center">
-              <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">
-                <i class="fas fa-trash-alt"></i> Delete
+              <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">Delete
               </a>
-              <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">
-                <i class="fas fa-edit"></i> Update Information
+              <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">Update Information
               </a>
             </div>
             <hr>

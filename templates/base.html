@@ -12,9 +12,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'fontawesome/all.min.css' %}"> <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
   <script src="{% static 'js/js_script.js' %}?v={{ STATIC_VERSION }}"></script>
   <script src="{% static 'js/jquery-3.7.0.min.js' %}?v={{ STATIC_VERSION }}"></script>
 </head>
@@ -44,7 +46,7 @@
           </li>
         </ul>
           <button type="button" class="btn btn-link text-light d-lg-none">
-            <i class="fas fa-bars"></i> <!-- Font Awesome icon for mobile menu -->
+            <i class="fas fa-bars"></i>
           </button>
       </div>
     </div>
@@ -53,7 +55,7 @@
 <header class="header">
   <div class="header_in">
     <button type="button" class="toggle" id="sidebarToggle">
-      <i class="fas fa-bars"></i> <!-- Font Awesome icon for sidebar toggle -->
+      <i class="fas fa-bars"></i>
     </button>
   </div>
 </header>
@@ -62,17 +64,18 @@
   <div class="row">
     <div class="col-md-2 bg-light" id="sidebar" style="min-height: 100vh;">
       {% block sidebar %}
-      {% include "includes/sidebar.html" %}
+        {% include "includes/sidebar.html" %}
       {% endblock %}
     </div>
     <div class="col-md-10 content-container" style="min-height: 100vh; background-color: #fff;">
       {% block content %}{% endblock %}
-    </div>
+
       {% block pagination %}
         {% include "includes/pagination.html" %}
       {% endblock %}
     </div>
   </div>
+</div>
 
 </body>
 

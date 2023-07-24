@@ -5,8 +5,7 @@
     <form class="mb-3">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search for cooks...">
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-search"></i> Search
+          <button type="submit" class="btn btn-primary">Search
           </button>
             </div>
         </form>
@@ -23,20 +22,15 @@
           <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="table-dark">
               <tr>
-                <th scope="col">
-                  <i class="fas fa-hashtag"></i> ID
+                <th scope="col">ID
                 </th>
-                <th scope="col">
-                  <i class="fas fa-user"></i> Username
+                <th scope="col">Username
                 </th>
-                <th scope="col">
-                  <i class="fas fa-signature"></i> Full Name
+                <th scope="col">Full Name
                 </th>
-                <th scope="col">
-                  <i class="fas fa-briefcase"></i> Experience
+                <th scope="col">Experience
                 </th>
-                <th scope="col">
-                  <i class="fas fa-tasks"></i> Actions
+                <th scope="col">Actions
                 </th>
                 </tr>
             </thead>
@@ -49,11 +43,9 @@
                   <td>{{ cook.years_of_experience }} years</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Cook Actions">
-                      <a href="{% url 'kitchen:cook-update' cook.id %}" class="btn btn-sm btn-outline-primary me-2">
-                        <i class="fas fa-edit"></i> Edit
+                      <a href="{% url 'kitchen:cook-update' cook.id %}" class="btn btn-sm btn-outline-primary me-2">Edit
                       </a>
-                      <a href="{% url 'kitchen:cook-delete' cook.id %}" class="btn btn-sm btn-outline-danger">
-                        <i class="fas fa-trash-alt"></i> Delete
+                      <a href="{% url 'kitchen:cook-delete' cook.id %}" class="btn btn-sm btn-outline-danger">Delete
                       </a>
                     </div>
                   </td>

@@ -1,20 +1,20 @@
 <ul class="list-group">
   {% if user.is_authenticated %}
   <li class="list-group-item bg-light">
-    <i class="fas fa-user-circle"></i> User: <a class="text-decoration-none" href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
+    User: <a class="text-decoration-none" href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
   </li>
   <li class="list-group-item">
-    <i class="fas fa-utensil-spoon"></i> <a class="text-decoration-none" href="{% url 'kitchen:dish_type-create' %}">Create new type of dish</a>
+    <a class="text-decoration-none" href="{% url 'kitchen:dish_type-create' %}">Create new type of dish</a>
   </li>
   <li class="list-group-item">
-    <i class="fas fa-hamburger"></i> <a class="text-decoration-none" href="{% url 'kitchen:dish-create' %}">Create new dish</a>
+    <a class="text-decoration-none" href="{% url 'kitchen:dish-create' %}">Create new dish</a>
   </li>
   <li class="list-group-item">
-    <i class="fas fa-sign-out-alt"></i> <a class="text-decoration-none" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+    <a class="text-decoration-none" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
   </li>
   {% else %}
   <li class="list-group-item">
-    <i class="fas fa-sign-in-alt"></i> <a class="text-decoration-none" href="{% url 'login'%}?next={{request.path}}">Login</a>
+    <a class="text-decoration-none" href="{% url 'login'%}?next={{request.path}}">Login</a>
   </li>
   {% endif %}
 </ul>
