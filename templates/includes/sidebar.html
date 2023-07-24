@@ -1,20 +1,24 @@
-<ul class="list-group">
-  {% if user.is_authenticated %}
-  <li class="list-group-item bg-light">
-    User: <a class="text-decoration-none" href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
-  </li>
-  <li class="list-group-item">
-    <a class="text-decoration-none" href="{% url 'kitchen:dish_type-create' %}">Create new type of dish</a>
-  </li>
-  <li class="list-group-item">
-    <a class="text-decoration-none" href="{% url 'kitchen:dish-create' %}">Create new dish</a>
-  </li>
-  <li class="list-group-item">
-    <a class="text-decoration-none" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
-  </li>
-  {% else %}
-  <li class="list-group-item">
-    <a class="text-decoration-none" href="{% url 'login'%}?next={{request.path}}">Login</a>
-  </li>
-  {% endif %}
-</ul>
+<aside class="sidebar">
+  <ul class="nav flex-column">
+    {% if user.is_authenticated %}
+      <br>
+    <li class="nav-item">
+      User: <a class="nav-link" href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
+    </li>
+      <hr>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'kitchen:dish_type-create' %}">Create new type of dish</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'kitchen:dish-create' %}">Create new dish</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a>
+    </li>
+    {% endif %}
+  </ul>
+</aside>

@@ -162,10 +162,13 @@ class CookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, generic.Update
         return self.request.user == self.get_object() or self.request.user.is_superuser
 
     def handle_no_permission(self):
+        context = {
+            'action': 'update',
+        }
         if self.request.user == self.get_object():
-            return super().post(self.request, *self.args, **self.kwargs)
+            return super().handle_no_permission()
         else:
-            return render(self.request, "kitchen/permission_denied.html")
+            return render(self.request, "kitchen/permission_denied.html", context)
 
 
 class CookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
@@ -178,10 +181,10 @@ class CookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.Delete
         return self.request.user == self.get_object() or self.request.user.is_superuser
 
     def handle_no_permission(self):
-        if self.request.user == self.get_object():
-            return super().post(self.request, *self.args, **self.kwargs)
-        else:
-            return render(self.request, "kitchen/permission_denied.html")
+        context = {
+            'action': 'delete',
+        }
+        return render(self.request, "kitchen/permission_denied.html", context)
 
 
 class PermissionDeniedView(generic.TemplateView):

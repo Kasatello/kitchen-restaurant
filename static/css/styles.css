@@ -71,56 +71,39 @@ body {
       background-color: #6d7fcc;
   }
 
-    .wrapper {
-      display: flex;
-      width: 100%;
-  }
+     .list-group {
+      margin-top: 20px;
+      max-width: 200px;
+      border-radius: 5px;
+    }
 
+    .list-group-item {
+      border: none;
+      padding: 10px 20px;
+    }
 
+    .list-group-item:hover {
+      background-color: #f0f0f0;
+    }
 
+    .list-group-item a {
+      color: #333;
+    }
 
-  #sidebar.active {
-      margin-left: -250px;
-  }
+    .list-group-item a:hover {
+      color: #007bff;
+      text-decoration: none;
+    }
 
-  #sidebar .sidebar-header {
-      padding: 20px;
+    .list-group-item.bg-light {
+      background-color: #f8f9fa;
+      font-weight: bold;
+      color: #333;
+    }
 
-  }
-
-  #sidebar ul.components {
-      padding: 20px 0;
-      border-bottom: 1px solid #47748b;
-  }
-
-
-  #sidebar ul li a {
-      padding: 10px;
-      font-size: 1.1em;
-      display: block;
-
-  }
-
-  #sidebar ul li a:hover {
-      color: #fff;
-      background: #6d7fcc; /* Change the background color on hover */
-  }
-
-  #sidebar ul li.active>a,
-  a[aria-expanded="true"] {
-      color: #fff;
-      background: #6d7fcc;
-  }
-
-  a[data-toggle="collapse"] {
-      position: relative;
-  }
-
-  ul ul a {
-      font-size: 0.9em !important;
-      padding-left: 30px !important;
-      background: #6d7fcc;
-  }
+    .list-group-item.bg-light a {
+      color: #333;
+    }
 
   /* Hover effect for buttons */
   .btn {
@@ -137,3 +120,42 @@ body {
       box-shadow: 0 17px 10px -10px rgba(58, 46, 46, 0.4);
       transform: translate(0px, -10px) scale(1.2);
   }
+
+  .sidebar {
+  position: fixed;
+  width: 200px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #202020;
+  color: white;
+  padding-top: 60px; /* To account for the navbar height */
+  box-shadow: 4px 7px 10px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 12px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar li:last-child {
+  border-bottom: none;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+}
+
+.sidebar a:hover {
+  color: #6d7fcc;
+}
+
