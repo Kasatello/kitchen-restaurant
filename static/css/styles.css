@@ -1,11 +1,45 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #fafafa;
-}
-.tdStyle {
-    background-image: url("static/images/background.JPG");
+    background-size: cover; /* or 'contain' */
+    background-position: center center; /* Adjust as needed */
     background-repeat: no-repeat;
-    background-size: 100%;
+}
+
+.table-card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.table-card table {
+  border-collapse: collapse; /* Remove table borders */
+  width: 100%;
+}
+
+.table-card th,
+.table-card td {
+  padding: 8px;
+  text-align: center;
+}
+
+.table-card th {
+  background-color: #007bff; /* Blue header background */
+  color: #fff; /* White text for header cells */
+}
+
+.table-card tbody tr:nth-child(odd) {
+  background-color: #f1f8ff; /* Light blue background for odd rows */
+}
+
+.table-card tbody tr:nth-child(even) {
+  background-color: #f8f9fa; /* Light gray background for even rows */
+}
+
+.table-card tbody tr:hover {
+  background-color: #e2e8f0; /* Gray background on hover */
+  transition: background-color 0.2s ease-in-out; /* Smoother transition */
 }
 
   /* Styling for a button */
@@ -106,17 +140,65 @@ body {
     }
 
   /* Hover effect for buttons */
-  .btn {
-      background-color: #7386D5;
-      color: #fff;
-      padding: 10px 15px;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all ease-in-out 300ms;
-  }
+.btn {
+  display: inline-block;
+  background-color: black;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: all ease-in-out 300ms;
+  border: none; /* Remove border from the button */
+}
 
-  .btn:hover {
-      background-color: #2babb2; /* Change the button color on hover */
-      box-shadow: 0 17px 10px -10px rgba(58, 46, 46, 0.4);
-      transform: translate(0px, -10px) scale(1.2);
-  }
+.btn:hover {
+  background-color: black; /* Change the button color on hover */
+  box-shadow: 0 17px 10px -10px rgba(58, 46, 46, 0.4);
+  transform: translate(0px, -10px) scale(1.2);
+  border: none; /* Remove border from the button on hover */
+}
+.sidebar {
+    position: sticky;
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    width: 200px;
+    min-height: 100vh;
+    padding: 20px 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+/* Sidebar Link Hover Styles */
+.sidebar a:hover {
+  background-color: #000000;
+  color: #fff;
+}
+
+.sidebar a.active {
+  background-color: #000000;
+  color: #fff;
+}
+
+
+
