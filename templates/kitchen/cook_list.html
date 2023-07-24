@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <form class="mb-3">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for cooks...">
+          <button type="submit" class="btn btn-primary">Search
+          </button>
+            </div>
+        </form>
+
+        <h1 class="display-4 mb-4">
+          <i class="fas fa-hat-chef"></i> Cooks List
+          <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page">
+            <i class="fas fa-plus"></i> Add New Cook
+          </a>
+        </h1>
+
+        {% if cook_list %}
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">ID
+                </th>
+                <th scope="col">Username
+                </th>
+                <th scope="col">Full Name
+                </th>
+                <th scope="col">Experience
+                </th>
+                <th scope="col">Actions
+                </th>
+                </tr>
+            </thead>
+              <tbody>
+                {% for cook in cook_list %}
+                <tr>
+                  <td class="fw-bold">{{ cook.id }}</td>
+                  <td><a href="{{ cook.get_absolute_url }}" class="text-decoration-none text-blue" style="text-decoration: underline;">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>
+                  <td>{{ cook.get_full_name }}</td>
+                  <td>{{ cook.years_of_experience }} years</td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Cook Actions">
+                      <a href="{% url 'kitchen:cook-update' cook.id %}" class="btn btn-sm btn-outline-primary me-2">Edit
+                      </a>
+                      <a href="{% url 'kitchen:cook-delete' cook.id %}" class="btn btn-sm btn-outline-danger">Delete
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="lead">There are no cooks in the restaurant.</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="mb-4">Dish Type List
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <form>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for dish types...">
+              <button type="submit" class="btn btn-primary">Search
+              </button>
+          </div>
+        </form>
+        </div>
+        <div class="col-md-6 text-end">
+          <a href="{% url 'kitchen:dish_type-create' %}" class="btn btn-primary">Create New Dish Type
+          </a>
+        </div>
+      </div>
+
+      {% if dish_type_list %}
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Name
+              </th>
+              <th scope="col">Delete
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for dishtype in dish_type_list %}
+                <tr>
+                  <td>{{ dishtype.name }}</td>
+                    <td>
+                      <a href="{% url 'kitchen:dish_type-delete' pk=dishtype.id %}" class="btn btn-sm btn-danger">Delete
+                      </a>
+                    </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="lead">There are no any types of dish in the restaurant.</p>
+      {% endif %}
+    </div>
+{% endblock %}

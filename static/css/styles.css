@@ -1,0 +1,161 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fafafa;
+}
+.tdStyle {
+    background-image: url("static/images/background.JPG");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+  /* Styling for a button */
+  .btn {
+      display: inline-block;
+      background-color: #7386D5;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+      background-color: #6d7fcc;
+  }
+
+  /* Styling for a card */
+  .card {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+  }
+
+  .card-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+  }
+
+  .card-content {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.5;
+  }
+
+  /* Styling for pagination */
+  .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      margin: 20px 0;
+      padding: 0;
+  }
+
+  .pagination li {
+      margin: 0 5px;
+  }
+
+  .pagination li a {
+      padding: 8px 12px;
+      background-color: #7386D5;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+  }
+
+  .pagination li.active a {
+      background-color: #6d7fcc;
+  }
+
+     .list-group {
+      margin-top: 20px;
+      max-width: 200px;
+      border-radius: 5px;
+    }
+
+    .list-group-item {
+      border: none;
+      padding: 10px 20px;
+    }
+
+    .list-group-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .list-group-item a {
+      color: #333;
+    }
+
+    .list-group-item a:hover {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .list-group-item.bg-light {
+      background-color: #f8f9fa;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .list-group-item.bg-light a {
+      color: #333;
+    }
+
+  /* Hover effect for buttons */
+  .btn {
+      background-color: #7386D5;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all ease-in-out 300ms;
+  }
+
+  .btn:hover {
+      background-color: #2babb2; /* Change the button color on hover */
+      box-shadow: 0 17px 10px -10px rgba(58, 46, 46, 0.4);
+      transform: translate(0px, -10px) scale(1.2);
+  }
+
+  .sidebar {
+  position: fixed;
+  width: 200px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #202020;
+  color: white;
+  padding-top: 60px; /* To account for the navbar height */
+  box-shadow: 4px 7px 10px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 12px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar li:last-child {
+  border-bottom: none;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+}
+
+.sidebar a:hover {
+  color: #6d7fcc;
+}
+
