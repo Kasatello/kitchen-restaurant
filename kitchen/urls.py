@@ -1,21 +1,12 @@
 from django.urls import path
 
-from kitchen.views import (
-    index,
-    DishTypeListView,
-    DishListView,
-    CookListView,
-    DishTypeCreateView,
-    DishTypeUpdateView,
-    DishTypeDeleteView,
-    DishDetailView,
-    DishCreateView,
-    DishUpdateView,
-    DishDeleteView,
-    CookDetailView,
-    CookDeleteView,
-    CookCreateView, CookUpdateView, PermissionDeniedView, DishListByTypeView
-)
+from kitchen.views import (CookCreateView, CookDeleteView, CookDetailView,
+                           CookListView, CookUpdateView, DishCreateView,
+                           DishDeleteView, DishDetailView, DishListByTypeView,
+                           DishListView, DishTypeCreateView,
+                           DishTypeDeleteView, DishTypeListView,
+                           DishTypeUpdateView, DishUpdateView,
+                           PermissionDeniedView, index)
 
 
 class DriverCreateView:

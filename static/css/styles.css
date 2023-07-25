@@ -45,7 +45,7 @@ body {
   /* Styling for a button */
   .btn {
       display: inline-block;
-      background-color: #7386D5;
+      background-color: #000000;
       color: #fff;
       padding: 10px 20px;
       border-radius: 5px;
@@ -55,7 +55,7 @@ body {
   }
 
   .btn:hover {
-      background-color: #6d7fcc;
+      background-color: #000000;
   }
 
   /* Styling for a card */
@@ -79,31 +79,36 @@ body {
       line-height: 1.5;
   }
 
-  /* Styling for pagination */
-  .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      list-style: none;
-      margin: 20px 0;
-      padding: 0;
-  }
+ .pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-  .pagination li {
-      margin: 0 5px;
-  }
+.page-item {
+  margin: 0 5px;
+}
 
-  .pagination li a {
-      padding: 8px 12px;
-      background-color: #7386D5;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-  }
+.page-link {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  color: #343a40;
+  text-decoration: none;
+  background-color: #f9f9f9; /* Light gray background */
+}
 
-  .pagination li.active a {
-      background-color: #6d7fcc;
-  }
+.page-link:hover {
+  background-color: #ddd; /* Darker gray background on hover */
+}
+
+.page-item.active .page-link {
+  background-color: #000000; /* Blue background for active page */
+  color: #fff;
+  border: 1px solid #000000;
+}
 
      .list-group {
       margin-top: 20px;
@@ -199,6 +204,3 @@ body {
   background-color: #000000;
   color: #fff;
 }
-
-
-
