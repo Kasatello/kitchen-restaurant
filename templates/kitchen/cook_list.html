@@ -1,11 +1,14 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
 <div class="container mt-5">
   <form class="mb-3">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for cooks...">
-      <button type="submit" class="btn btn-primary">Search</button>
+      {{ search_form|crispy }}
+      <div class="input-group-append" style="margin-left: 10px;">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
     </div>
   </form>
 
