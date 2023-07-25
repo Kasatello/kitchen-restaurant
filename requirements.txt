@@ -41,9 +41,6 @@ pathspec==0.11.1
 pexpect==4.8.0
 pkginfo==1.9.6
 platformdirs==3.9.1
-poetry==1.5.1
-poetry-core==1.6.1
-poetry-plugin-export==1.4.0
 psycopg2-binary==2.9.6
 ptyprocess==0.7.0
 pycodestyle==2.10.0
@@ -51,6 +48,7 @@ pycparser==2.21
 pyflakes==3.0.1
 pyproject_hooks==1.0.0
 python-dotenv==1.0.0
+pytz==2023.3
 rapidfuzz==2.15.1
 referencing==0.30.0
 requests==2.31.0
