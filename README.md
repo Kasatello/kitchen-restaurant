@@ -9,7 +9,7 @@ This is a web application for managing a restaurant, including creating and upda
 U can use this login credentials:
 ```shell
 admin: kasatello
-password: admin12345
+password: admin12341
 ```
 
 ## Table of Contents
