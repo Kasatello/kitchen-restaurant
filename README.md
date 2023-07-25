@@ -2,6 +2,16 @@
 
 This is a web application for managing a restaurant, including creating and updating dishes, managing cooks, and more.
 
+## Check it out
+
+[Restaurant project deployed to Render](https://restaurant-mate-zb80.onrender.com/)
+
+U can use this login credentials:
+```shell
+admin: kasatello
+password: admin12345
+```
+
 ## Table of Contents
 
 - [Introduction](#introduction)
