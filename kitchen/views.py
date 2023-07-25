@@ -1,21 +1,14 @@
 from django.contrib.auth import login
-from django.contrib.auth.mixins import (
-    LoginRequiredMixin,
-    PermissionRequiredMixin)
-from django.http import HttpRequest, HttpResponse, Http404
+from django.contrib.auth.mixins import (LoginRequiredMixin,
+                                        PermissionRequiredMixin)
+from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import (
-    DishForm,
-    CookCreationForm,
-    CookUpdateForm,
-    CookSearchForm,
-    DishSearchForm,
-    DishTypeSearchForm
-)
-from kitchen.models import Cook, DishType, Dish
+from kitchen.forms import (CookCreationForm, CookSearchForm, CookUpdateForm,
+                           DishForm, DishSearchForm, DishTypeSearchForm)
+from kitchen.models import Cook, Dish, DishType
 
 
 def index(request: HttpRequest) -> HttpResponse:

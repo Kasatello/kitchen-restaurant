@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from kitchen.forms import CookCreationForm, DishForm, CookUpdateForm
+from kitchen.forms import CookCreationForm, CookUpdateForm, DishForm
 
 
 class FormsTests(TestCase):
